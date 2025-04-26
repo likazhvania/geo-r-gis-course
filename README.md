@@ -2,7 +2,7 @@
 
 ## Licensing
 
-* **Text, figures, assignments**: © 2025 Your Name – licensed under
+* **Text, figures, assignments**: © 2025 Lika Zhvania – licensed under
   [Creative Commons BY-SA 4.0](link-to-license-file).
 * **Code examples & scripts**: released under the [MIT License](link).
 
