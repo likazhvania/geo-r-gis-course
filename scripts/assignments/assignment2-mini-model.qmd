@@ -1,0 +1,6 @@
+---
+#title: "assignment2-mini-model"
+editor: visual
+---
+
+# Assignment 2: Mini Model {.unnumbered}

@@ -1,0 +1,8 @@
+---
+# title: "Welcome"
+---
+
+# Welcome {.unnumbered}
+
+```{=html}
+#<img src="figures/cover.png" style="width:180px;float:right;margin-left:15px;">

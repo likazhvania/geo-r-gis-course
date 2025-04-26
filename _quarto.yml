@@ -1,0 +1,49 @@
+project:
+  type: book
+  output-dir: docs/          # built HTML goes here
+  execute-dir: project
+
+book:
+  title: "R & GIS for Geoinformatics"
+  author: "Your Name"
+  date: "2024-09-01"
+  repo-url: "https://github.com/likazhvania/geo-r-gis-course/tree/main"
+  downloads: [pdf]     # Quarto will create these on render
+  sidebar:
+    style: "floating"        # nice left-hand nav
+  chapters:
+    - index.qmd
+    - part: "Foundations"
+      chapters:
+        - scripts/week01-getting-setup.qmd
+        - scripts/week02-r-basics.qmd
+        - scripts/week03-data-wrangling.qmd
+        - scripts/week04-spatial-foundations.qmd
+        - scripts/week05-vector-operations.qmd
+        - scripts/week06-raster-essentials.qmd
+    - part: "Spatial Analysis"
+      chapters:
+        - scripts/week07-bridging-r-qgis.qmd
+        - scripts/week08-esda.qmd
+        - scripts/week09-surface-modelling.qmd
+        - scripts/week10-network-accessibility.qmd
+    - part: "Workflow & Communication"
+      chapters:
+        - scripts/week11-automation-repro.qmd
+        - scripts/week12-communicating-results.qmd
+        
+    # ▶ NEW PART ◀
+    - part: "Assignments"
+      chapters:
+        - scripts/assignments/assignment0-overview.qmd         # general rules, grading, deadlines
+        - scripts/assignments/assignment1-data-wrangling.qmd   # Assignment 1
+        - scripts/assignments/assignment2-mini-model.qmd       # Assignment 2
+        - scripts/assignments/final-project.qmd                # Final project
+
+format:
+  html:
+    theme: cosmo        # any Bootswatch theme
+    toc: true
+    code-fold: true
+  pdf:
+    documentclass: scrreprt

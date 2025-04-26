@@ -1,0 +1,17 @@
+---
+title: "Getting set up"
+format:
+  html:
+    code-link: true     # adds “” copy button
+learning-objectives:
+  - Install R, RStudio, QGIS and required packages
+  - Navigate RStudio panes; run an R script
+  - Understand what a GIS is and why we use both R & QGIS
+---
+
+## 1  Warm-up (10 min)
+
+> Open RStudio and type:
+
+```{r}
+print("Hello GIS!")
