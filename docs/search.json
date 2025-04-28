@@ -1,198 +1,158 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "R & GIS for Geoinformatics",
+    "section": "",
+    "text": "Welcome\nR & GIS for Geoinformatics is a 12-week, hands-on course that pairs RStudio scripting with QGIS cartography.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "scripts/week01-getting-setup.html",
+    "href": "scripts/week01-getting-setup.html",
+    "title": "1  Getting set up",
+    "section": "",
+    "text": "1.1 Learning objectives",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting set up</span>"
+    ]
+  },
+  {
     "objectID": "scripts/week01-getting-setup.html#learning-objectives",
     "href": "scripts/week01-getting-setup.html#learning-objectives",
     "title": "1  Getting set up",
-    "section": "1.1 Learning objectives",
-    "text": "1.1 Learning objectives\n\nCreate & organise an RStudio Project and plain R scripts\nInstall and load R packages (tidyverse, sf, ggplot2)\nImport, explore, summarise, and visualise a dataset\nOpen a new QGIS project, set a working folder, and save settings\nAdd basemaps and sample data; explore the QGIS interface and key plugins"
+    "section": "",
+    "text": "Create & organise an RStudio Project and plain R scripts\nInstall and load R packages (tidyverse, sf, ggplot2)\nImport, explore, summarise, and visualise a dataset\nOpen a new QGIS project, set a working folder, and save settings\nAdd basemaps and sample data; explore the QGIS interface and key plugins",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting set up</span>"
+    ]
   },
   {
     "objectID": "scripts/week01-getting-setup.html#pre-class-checklist",
     "href": "scripts/week01-getting-setup.html#pre-class-checklist",
     "title": "1  Getting set up",
     "section": "1.2 Pre-class checklist",
-    "text": "1.2 Pre-class checklist\n\n\n\nSoftware\nVersion / link\n\n\n\n\nR\n≥ 4.3 https://cran.r-project.org\n\n\nRStudio Desktop\nLatest https://posit.co/download\n\n\nQGIS\n3.34 (LTR) https://qgis.org\n\n\nGit (optional)\n≥ 2.40\n\n\n\nCreate a folder geo-course/ somewhere you have write access. We’ll treat this as your working directory for the whole semester."
+    "text": "1.2 Pre-class checklist\n\n\n\nSoftware\nVersion / link\n\n\n\n\nR\n≥ 4.3 https://cran.r-project.org\n\n\nRStudio Desktop\nLatest https://posit.co/download\n\n\nQGIS\n3.34 (LTR) https://qgis.org\n\n\nGit (optional)\n≥ 2.40\n\n\n\nCreate a folder geo-course/ somewhere you have write access. We’ll treat this as your working directory for the whole semester.",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting set up</span>"
+    ]
   },
   {
     "objectID": "scripts/week01-getting-setup.html#part-a---r-basics",
     "href": "scripts/week01-getting-setup.html#part-a---r-basics",
     "title": "1  Getting set up",
     "section": "1.3 Part A - R Basics",
-    "text": "1.3 Part A - R Basics\n\n1.3.1 Create an R script\n\nLaunch RStudio → File ▸ New Project ▸ Existing Directory → point to geo-course/.\nFile ▸ New File ▸ R Script → save as week01_intro.R.\nAt the very top add:\n\n\n\nCode\n# week01_intro.R  -- your first R commands\nprint(\"Hello, GIS world!\")\n\n\n[1] \"Hello, GIS world!\"\n\n\nTip: The Files pane mirrors your disk. Use New Folder to keep /data, /scripts, /outputs tidy.\n\n\n1.3.2 Install & load libraries\n\n\nCode\n# Run **once** per machine\n#install.packages(c(\"tidyverse\", \"ggplot2\", \"dplyr\", \"sf\"))\n\n\n\n\nCode\n# Run in every new R session\nlibrary(tidyverse)   # loads ggplot2, dplyr, readr, etc.\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.0     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nCode\nlibrary(sf)          # spatial data\n\n\nLinking to GEOS 3.11.2, GDAL 3.8.2, PROJ 9.3.1; sf_use_s2() is TRUE\n\n\n\n\n1.3.3 Core syntax refresher\n\n\nCode\n# assigning objects\ngreeting &lt;- \"Hello, R!\"\nyear     &lt;- 2025\nis_spatial &lt;- TRUE\n\n\n\n\nCode\ngreeting\n\n\n[1] \"Hello, R!\"\n\n\nCode\nyear\n\n\n[1] 2025\n\n\nCode\nis_spatial\n\n\n[1] TRUE\n\n\n\n\nCode\n# vectors ⟶ simple arithmetic\nnums &lt;- c(1, 2, 3, 4)\nmean(nums)\n\n\n[1] 2.5\n\n\n\n\n1.3.4 Import a built-in data set\n\n\nCode\ndata(\"mtcars\")   # 32 cars × 11 variables\nhead(mtcars)\n\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\n(Later we’ll replace this with real spatial data.)\n\n\n1.3.5 Basic data manipulation\n\n\nCode\nmtcars |&gt;\n  summarise(\n    cars        = n(),\n    mean_mpg    = mean(mpg),\n    best_eff    = max(mpg)\n  )\n\n\n  cars mean_mpg best_eff\n1   32 20.09062     33.9\n\n\nGroup by cylinders:\n\n\nCode\nmtcars |&gt;\n  group_by(cyl) |&gt;\n  summarise(across(mpg, list(min = min,\n                             mean = mean,\n                             max = max)))\n\n\n# A tibble: 3 × 4\n    cyl mpg_min mpg_mean mpg_max\n  &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;\n1     4    21.4     26.7    33.9\n2     6    17.8     19.7    21.4\n3     8    10.4     15.1    19.2\n\n\n\n\n1.3.6 First ggplot\n\n\nCode\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point() +\n  labs(x = \"Weight (1000 lbs)\", y = \"Miles / gallon\") +\n  theme_minimal()\n\n\n\n\n\nExport the plot:\n\n\nCode\nggsave(\"outputs/mtcars_wt_mpg.png\", width = 6, height = 4, dpi = 300)"
+    "text": "1.3 Part A - R Basics\n\n1.3.1 Create an R script\n\nLaunch RStudio → File ▸ New Project ▸ Existing Directory → point to geo-course/.\nFile ▸ New File ▸ R Script → save as week01_intro.R.\nAt the very top add:\n\n\n# week01_intro.R  -- your first R commands\nprint(\"Hello, GIS world!\")\n\n[1] \"Hello, GIS world!\"\n\n\nTip: The Files pane mirrors your disk. Use New Folder to keep /data, /scripts, /outputs tidy.\n\n\n1.3.2 Install & load libraries\n\n# Run **once** per machine\n#install.packages(c(\"tidyverse\", \"ggplot2\", \"dplyr\", \"sf\"))\n\n\n# Run in every new R session\nlibrary(tidyverse)   # loads ggplot2, dplyr, readr, etc.\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.0     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(sf)          # spatial data\n\nLinking to GEOS 3.11.2, GDAL 3.8.2, PROJ 9.3.1; sf_use_s2() is TRUE\n\n\n\n\n1.3.3 Core syntax refresher\n\n# assigning objects\ngreeting &lt;- \"Hello, R!\"\nyear     &lt;- 2025\nis_spatial &lt;- TRUE\n\n\ngreeting\n\n[1] \"Hello, R!\"\n\nyear\n\n[1] 2025\n\nis_spatial\n\n[1] TRUE\n\n\n\n# vectors ⟶ simple arithmetic\nnums &lt;- c(1, 2, 3, 4)\nmean(nums)\n\n[1] 2.5\n\n\n\n\n1.3.4 Import a built-in data set\n\ndata(\"mtcars\")   # 32 cars × 11 variables\nhead(mtcars)\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\n(Later we’ll replace this with real spatial data.)\n\n\n1.3.5 Basic data manipulation\n\nmtcars |&gt;\n  summarise(\n    cars        = n(),\n    mean_mpg    = mean(mpg),\n    best_eff    = max(mpg)\n  )\n\n  cars mean_mpg best_eff\n1   32 20.09062     33.9\n\n\nGroup by cylinders:\n\nmtcars |&gt;\n  group_by(cyl) |&gt;\n  summarise(across(mpg, list(min = min,\n                             mean = mean,\n                             max = max)))\n\n# A tibble: 3 × 4\n    cyl mpg_min mpg_mean mpg_max\n  &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;\n1     4    21.4     26.7    33.9\n2     6    17.8     19.7    21.4\n3     8    10.4     15.1    19.2\n\n\n\n\n1.3.6 First ggplot\n\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point() +\n  labs(x = \"Weight (1000 lbs)\", y = \"Miles / gallon\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\nExport the plot:\n\nggsave(\"outputs/mtcars_wt_mpg.png\", width = 6, height = 4, dpi = 300)",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting set up</span>"
+    ]
   },
   {
     "objectID": "scripts/week01-getting-setup.html#part-b---qgis-basics",
     "href": "scripts/week01-getting-setup.html#part-b---qgis-basics",
     "title": "1  Getting set up",
     "section": "1.4 Part B - QGIS Basics",
-    "text": "1.4 Part B - QGIS Basics\n\n1.4.1 Create & save a QGIS project\n\nOpen QGIS 3.34 → Project ▸ New\nProject ▸ Properties ▸ General → set Project home to your geo-course/ folder.\nProject ▸ Save → week01_intro.qgz.\n\nThis keeps relative paths identical on any PC.\n\n\n1.4.2 Tour of the interface\n\nBrowser Panel – navigate to / drag files\nLayers Panel – toggle visibility, styling, grouping\nMap Canvas – the main view\nProcessing Toolbox – scripts & analysis tools\nTop menus: Vector, Raster, Plugins …\n\n\n\n1.4.3 Add basemaps (XYZ Tiles)\nFollow the second method in the blog post https://opengislab.com/…/add-basemaps-in-qgis-30 — add QuickMapServices:\n\nPlugins ▸ Manage and Install Plugins → search QuickMapServices → Install.\nWeb ▸ QuickMapServices ▸ Settings ▸ More services → Get contributed pack.\nWeb ▸ QuickMapServices ▸ OSM ▸ OSM Standard (or any favourite basemap).\n\n\n\n1.4.4 Load sample vector data\nGrab the Natural Earth admin-0 countries shapefile (≈ 10 MB): * Layer ▸ Add Layer ▸ Add Vector Layer → Protocol → URL: https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural/ne_50m_admin_0_countries.zip Geometry column = the_geom → Add\nStyle polygons quickly via Layer Styling ▸ single symbol.\n\n\n1.4.5 Key plugins to know\nPlugin | Why it matters QuickMapServices | instant basemaps QuickOSM | download OSM features by query Processing R Provider | run R scripts from within QGIS OpenLayers Plugin (legacy) | alternative basemaps Geometry by Expression | attribute-driven geometry edits\nInstall via Plugins dialog as needed."
-  },
-  {
-    "objectID": "scripts/week02-r-basics.html#quarto",
-    "href": "scripts/week02-r-basics.html#quarto",
-    "title": "2  R basics",
-    "section": "2.1 Quarto",
-    "text": "2.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "scripts/week02-r-basics.html#running-code",
-    "href": "scripts/week02-r-basics.html#running-code",
-    "title": "2  R basics",
-    "section": "2.2 Running Code",
-    "text": "2.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\nCode\n1 + 1\n\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
-  },
-  {
-    "objectID": "scripts/week03-data-wrangling.html#quarto",
-    "href": "scripts/week03-data-wrangling.html#quarto",
-    "title": "3  Data wrangling 101",
-    "section": "3.1 Quarto",
-    "text": "3.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "scripts/week03-data-wrangling.html#running-code",
-    "href": "scripts/week03-data-wrangling.html#running-code",
-    "title": "3  Data wrangling 101",
-    "section": "3.2 Running Code",
-    "text": "3.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\nCode\n1 + 1\n\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
-  },
-  {
-    "objectID": "scripts/week04-spatial-foundations.html#quarto",
-    "href": "scripts/week04-spatial-foundations.html#quarto",
-    "title": "4  Spatial data foundations",
-    "section": "4.1 Quarto",
-    "text": "4.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "scripts/week04-spatial-foundations.html#running-code",
-    "href": "scripts/week04-spatial-foundations.html#running-code",
-    "title": "4  Spatial data foundations",
-    "section": "4.2 Running Code",
-    "text": "4.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\nCode\n1 + 1\n\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
-  },
-  {
-    "objectID": "scripts/week05-vector-operations.html#quarto",
-    "href": "scripts/week05-vector-operations.html#quarto",
-    "title": "5  Vector operations in R",
-    "section": "5.1 Quarto",
-    "text": "5.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "scripts/week05-vector-operations.html#running-code",
-    "href": "scripts/week05-vector-operations.html#running-code",
-    "title": "5  Vector operations in R",
-    "section": "5.2 Running Code",
-    "text": "5.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\nCode\n1 + 1\n\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
-  },
-  {
-    "objectID": "scripts/week06-raster-essentials.html#quarto",
-    "href": "scripts/week06-raster-essentials.html#quarto",
-    "title": "6  Raster essentials",
-    "section": "6.1 Quarto",
-    "text": "6.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "scripts/week06-raster-essentials.html#running-code",
-    "href": "scripts/week06-raster-essentials.html#running-code",
-    "title": "6  Raster essentials",
-    "section": "6.2 Running Code",
-    "text": "6.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\nCode\n1 + 1\n\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
-  },
-  {
-    "objectID": "scripts/week07-bridging-r-qgis.html#quarto",
-    "href": "scripts/week07-bridging-r-qgis.html#quarto",
-    "title": "7  Bridging R ↔︎ QGIS",
-    "section": "7.1 Quarto",
-    "text": "7.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "scripts/week07-bridging-r-qgis.html#running-code",
-    "href": "scripts/week07-bridging-r-qgis.html#running-code",
-    "title": "7  Bridging R ↔︎ QGIS",
-    "section": "7.2 Running Code",
-    "text": "7.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\nCode\n1 + 1\n\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
-  },
-  {
-    "objectID": "scripts/week08-esda.html#quarto",
-    "href": "scripts/week08-esda.html#quarto",
-    "title": "8  Exploratory spatial data analysis (ESDA)",
-    "section": "8.1 Quarto",
-    "text": "8.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "scripts/week08-esda.html#running-code",
-    "href": "scripts/week08-esda.html#running-code",
-    "title": "8  Exploratory spatial data analysis (ESDA)",
-    "section": "8.2 Running Code",
-    "text": "8.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\nCode\n1 + 1\n\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
-  },
-  {
-    "objectID": "scripts/week09-surface-modelling.html#quarto",
-    "href": "scripts/week09-surface-modelling.html#quarto",
-    "title": "9  Surface modelling",
-    "section": "9.1 Quarto",
-    "text": "9.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "scripts/week09-surface-modelling.html#running-code",
-    "href": "scripts/week09-surface-modelling.html#running-code",
-    "title": "9  Surface modelling",
-    "section": "9.2 Running Code",
-    "text": "9.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\nCode\n1 + 1\n\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
-  },
-  {
-    "objectID": "scripts/week10-network-accessibility.html#quarto",
-    "href": "scripts/week10-network-accessibility.html#quarto",
-    "title": "10  Network & Accessibility Analysis",
-    "section": "10.1 Quarto",
-    "text": "10.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "scripts/week10-network-accessibility.html#running-code",
-    "href": "scripts/week10-network-accessibility.html#running-code",
-    "title": "10  Network & Accessibility Analysis",
-    "section": "10.2 Running Code",
-    "text": "10.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\nCode\n1 + 1\n\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
-  },
-  {
-    "objectID": "scripts/week11-automation-repro.html#quarto",
-    "href": "scripts/week11-automation-repro.html#quarto",
-    "title": "11  Automation & reproducibility",
-    "section": "11.1 Quarto",
-    "text": "11.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "scripts/week11-automation-repro.html#running-code",
-    "href": "scripts/week11-automation-repro.html#running-code",
-    "title": "11  Automation & reproducibility",
-    "section": "11.2 Running Code",
-    "text": "11.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\nCode\n1 + 1\n\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
-  },
-  {
-    "objectID": "scripts/week12-communicating-results.html#quarto",
-    "href": "scripts/week12-communicating-results.html#quarto",
-    "title": "12  Communicating results",
-    "section": "12.1 Quarto",
-    "text": "12.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "scripts/week12-communicating-results.html#running-code",
-    "href": "scripts/week12-communicating-results.html#running-code",
-    "title": "12  Communicating results",
-    "section": "12.2 Running Code",
-    "text": "12.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\nCode\n1 + 1\n\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
+    "text": "1.4 Part B - QGIS Basics\n\n1.4.1 Create & save a QGIS project\n\nOpen QGIS 3.34 → Project ▸ New\nProject ▸ Properties ▸ General → set Project home to your geo-course/ folder.\nProject ▸ Save → week01_intro.qgz.\n\nThis keeps relative paths identical on any PC.\n\n\n1.4.2 Tour of the interface\n\nBrowser Panel – navigate to / drag files\nLayers Panel – toggle visibility, styling, grouping\nMap Canvas – the main view\nProcessing Toolbox – scripts & analysis tools\nTop menus: Vector, Raster, Plugins …\n\n\n\n1.4.3 Add basemaps (XYZ Tiles)\nFollow the second method in the blog post https://opengislab.com/…/add-basemaps-in-qgis-30 — add QuickMapServices:\n\nPlugins ▸ Manage and Install Plugins → search QuickMapServices → Install.\nWeb ▸ QuickMapServices ▸ Settings ▸ More services → Get contributed pack.\nWeb ▸ QuickMapServices ▸ OSM ▸ OSM Standard (or any favourite basemap).\n\n\n\n1.4.4 Load sample vector data\nGrab the Natural Earth admin-0 countries shapefile (≈ 10 MB): * Layer ▸ Add Layer ▸ Add Vector Layer → Protocol → URL: https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural/ne_50m_admin_0_countries.zip Geometry column = the_geom → Add\nStyle polygons quickly via Layer Styling ▸ single symbol.\n\n\n1.4.5 Key plugins to know\nPlugin | Why it matters QuickMapServices | instant basemaps QuickOSM | download OSM features by query Processing R Provider | run R scripts from within QGIS OpenLayers Plugin (legacy) | alternative basemaps Geometry by Expression | attribute-driven geometry edits\nInstall via Plugins dialog as needed.",
+    "crumbs": [
+      "Foundations",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting set up</span>"
+    ]
   },
   {
     "objectID": "scripts/assignments/assignment0-overview.html",
     "href": "scripts/assignments/assignment0-overview.html",
     "title": "Overview",
     "section": "",
-    "text": "This module uses two formative assignments plus a summative final project:\n\n\n\n\n\n\n\n\n\nItem\nWhen\nWeight\nPurpose\n\n\n\n\nAssignment 1 – Data Wrangling & Basic Map\ndue Week 7\n15 %\nCheck grasp of tidy data, joins, simple cartography.\n\n\nAssignment 2 – Mini Spatial Model\ndue Week 10\n25 %\nApply vector analysis or accessibility workflow to a new dataset.\n\n\nFinal Project\nexam week\n60 %\nEnd-to-end case study integrating R & QGIS with written report.\n\n\n\nLate policy, submission format, and marking rubric follow below …"
+    "text": "This module uses two formative assignments plus a summative final project:\n\n\n\n\n\n\n\n\n\nItem\nWhen\nWeight\nPurpose\n\n\n\n\nAssignment 1 – Data Wrangling & Basic Map\ndue Week 7\n15 %\nCheck grasp of tidy data, joins, simple cartography.\n\n\nAssignment 2 – Mini Spatial Model\ndue Week 10\n25 %\nApply vector analysis or accessibility workflow to a new dataset.\n\n\nFinal Project\nexam week\n60 %\nEnd-to-end case study integrating R & QGIS with written report.\n\n\n\nLate policy, submission format, and marking rubric follow below …",
+    "crumbs": [
+      "Assignments",
+      "Overview"
+    ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
+    "objectID": "index.html#learning-path",
+    "href": "index.html#learning-path",
     "title": "R & GIS for Geoinformatics",
+    "section": "Learning path",
+    "text": "Learning path\n\nFoundations – R syntax, tidy data, CRS basics\n\nVector Spatial Analysis – joins, buffers, networks, ESDA\n\nWorkflow & Communication – R ↔︎ QGIS hand-off, automation, web maps",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#assessment",
+    "href": "index.html#assessment",
+    "title": "R & GIS for Geoinformatics",
+    "section": "Assessment",
+    "text": "Assessment\n\n\n\nItem\nWeek\nWeight\n\n\n\n\nAssignment 1 · Data wrangling + map/plot\n7\n15 %\n\n\nAssignment 2 · Mini spatial model\n10\n25 %\n\n\nFinal project · End-to-end case study\nExam week\n60 %",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#first-week-checklist",
+    "href": "index.html#first-week-checklist",
+    "title": "R & GIS for Geoinformatics",
+    "section": "First-week checklist",
+    "text": "First-week checklist\n\nInstall R, RStudio, QGIS\n\nSyntax & simple coding\n\nQuestions? Post in #Forum on Digicampus.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "scripts/reference-resources.html",
+    "href": "scripts/reference-resources.html",
+    "title": "Reference & Resources",
     "section": "",
-    "text": "Welcome\n#"
+    "text": "R essentials",
+    "crumbs": [
+      "Reference & Resources"
+    ]
+  },
+  {
+    "objectID": "scripts/reference-resources.html#r-essentials",
+    "href": "scripts/reference-resources.html#r-essentials",
+    "title": "Reference & Resources",
+    "section": "",
+    "text": "Cheatsheets\n\nRStudio IDE — https://posit.co/resources/cheatsheets\n\nData transformation (dplyr, tidyr) — https://github.com/rstudio/cheatsheets/raw/main/data-transformation.pdf\n\nData visualisation (ggplot2) — https://github.com/rstudio/cheatsheets/raw/main/data-visualization-2.1.pdf\n\nSimple-Features (sf) — https://r-spatial.github.io/sf/articles/sf.pdf\n\n\n\nCore documentation\n\nCRAN R Manuals — https://cran.r-project.org/manuals.html\n\nTidyverse reference — https://www.tidyverse.org/packages/\n\nR for Data Science (free book) — https://r4ds.hadley.nz/\n\n\n\nAsk for help\n\nStack Overflow tags #r, #gis\n\nPosit Community — https://community.rstudio.com",
+    "crumbs": [
+      "Reference & Resources"
+    ]
+  },
+  {
+    "objectID": "scripts/reference-resources.html#gis-qgis",
+    "href": "scripts/reference-resources.html#gis-qgis",
+    "title": "Reference & Resources",
+    "section": "GIS & QGIS",
+    "text": "GIS & QGIS\n\nQGIS User Guide 3.34 — https://docs.qgis.org/3.34/en/\n\nQGIS Training Manual — https://docs.qgis.org/latest/en/docs/training_manual/\n\nProcessing-toolbox lookup — https://algorithms.qgis.org\n\nQuickOSM plugin docs — https://github.com/3liz/QuickOSM\n\n\nCoordinate systems\n\nEPSG Registry — https://epsg.org\n\nsf::st_crs() reference — https://r-spatial.github.io/sf/reference/st_crs.html",
+    "crumbs": [
+      "Reference & Resources"
+    ]
+  },
+  {
+    "objectID": "scripts/reference-resources.html#open-data-portals",
+    "href": "scripts/reference-resources.html#open-data-portals",
+    "title": "Reference & Resources",
+    "section": "Open data portals",
+    "text": "Open data portals\n\n\n\nPortal\nWhat you get\n\n\n\n\nNatural Earth\nGlobal vector & raster (1:10 m / 1:50 m / 1:110 m) — https://www.naturalearthdata.com\n\n\nOpenStreetMap\nVolunteered geographic data; download via QuickOSM or the osmextract R package\n\n\nCopernicus Hub\nSentinel satellite imagery — https://scihub.copernicus.eu",
+    "crumbs": [
+      "Reference & Resources"
+    ]
+  },
+  {
+    "objectID": "scripts/reference-resources.html#version-control-reproducibility",
+    "href": "scripts/reference-resources.html#version-control-reproducibility",
+    "title": "Reference & Resources",
+    "section": "Version control & reproducibility",
+    "text": "Version control & reproducibility\n\nGit cheat-sheet (PDF) — https://education.github.com/git-cheat-sheet-education.pdf\n\nHappy Git with R (online book) — https://happygitwithr.com\n\nQuarto documentation — https://quarto.org/docs\n\n\n\nBookmark this page! We’ll add more handy links (favourite CRSs, extra plugins, etc.) as the semester progresses.",
+    "crumbs": [
+      "Reference & Resources"
+    ]
   }
 ]

@@ -1,0 +1,64 @@
+---
+#title: "Reference & Resources"
+author: "Lika Zhvania"
+numbered: false
+editor: visual
+---
+
+# Reference & Resources {.unnumbered}
+
+## R essentials
+
+### Cheatsheets
+
+-   **RStudio IDE** — <https://posit.co/resources/cheatsheets>\
+-   **Data transformation (`dplyr`, `tidyr`)** — <https://github.com/rstudio/cheatsheets/raw/main/data-transformation.pdf>\
+-   **Data visualisation (`ggplot2`)** — <https://github.com/rstudio/cheatsheets/raw/main/data-visualization-2.1.pdf>\
+-   **Simple-Features (`sf`)** — <https://r-spatial.github.io/sf/articles/sf.pdf>
+
+### Core documentation
+
+-   CRAN R Manuals — <https://cran.r-project.org/manuals.html>\
+-   Tidyverse reference — <https://www.tidyverse.org/packages/>\
+-   *R for Data Science* (free book) — <https://r4ds.hadley.nz/>
+
+### Ask for help
+
+-   Stack Overflow tags **#r**, **#gis**\
+-   Posit Community — <https://community.rstudio.com>
+
+------------------------------------------------------------------------
+
+## GIS & QGIS
+
+-   **QGIS User Guide 3.34** — <https://docs.qgis.org/3.34/en/>\
+-   **QGIS Training Manual** — <https://docs.qgis.org/latest/en/docs/training_manual/>\
+-   Processing-toolbox lookup — <https://algorithms.qgis.org>\
+-   QuickOSM plugin docs — <https://github.com/3liz/QuickOSM>
+
+### Coordinate systems
+
+-   EPSG Registry — <https://epsg.org>\
+-   `sf::st_crs()` reference — <https://r-spatial.github.io/sf/reference/st_crs.html>
+
+------------------------------------------------------------------------
+
+## Open data portals
+
+| Portal             | What you get                                                                            |
+|---------------------------|---------------------------------------------|
+| **Natural Earth**  | Global vector & raster (1:10 m / 1:50 m / 1:110 m) — <https://www.naturalearthdata.com> |
+| **OpenStreetMap**  | Volunteered geographic data; download via QuickOSM or the `osmextract` R package        |
+| **Copernicus Hub** | Sentinel satellite imagery — <https://scihub.copernicus.eu>                             |
+
+------------------------------------------------------------------------
+
+## Version control & reproducibility
+
+-   Git cheat-sheet (PDF) — <https://education.github.com/git-cheat-sheet-education.pdf>\
+-   *Happy Git with R* (online book) — <https://happygitwithr.com>\
+-   Quarto documentation — <https://quarto.org/docs>
+
+------------------------------------------------------------------------
+
+> **Bookmark this page!** We’ll add more handy links (favourite CRSs, extra plugins, etc.) as the semester progresses.

@@ -13,6 +13,7 @@ book:
     style: "floating"        # nice left-hand nav
   chapters:
     - index.qmd
+    - scripts/reference-resources.qmd
     - part: "Foundations"
       chapters:
         - scripts/week01-getting-setup.qmd

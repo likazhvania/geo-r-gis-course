@@ -2,9 +2,36 @@
 # title: "Welcome"
 ---
 
-# Welcome {.unnumbered}
-
 ```{=html}
-#<img src="figures/cover.png" style="width:180px;float:right;margin-left:15px;">
+<img src="figures/uni_aug_logo.png" style="width:180px;float:right;margin-left:15px;">
 ```
 
+# Welcome {.unnumbered}
+
+**R & GIS for Geoinformatics** is a 12-week, hands-on course that pairs **RStudio** scripting with **QGIS** cartography.
+
+| Detail | Info |
+|-------|------|
+| **Schedule** | Mondays 14:00 - 15:30 Lab 1014/B |
+| **Prerequisites** | None – no prior coding or GIS experience |
+| **Software** | R ≥ 4.3 · RStudio Desktop · QGIS 3.34 LTR (all free) |
+
+## Learning path
+1. **Foundations** – R syntax, tidy data, CRS basics  
+2. **Vector Spatial Analysis** – joins, buffers, networks, ESDA  
+3. **Workflow & Communication** – R ↔ QGIS hand-off, automation, web maps  
+
+## Assessment
+
+| Item | Week | Weight |
+|------|------|-------|
+| Assignment 1 · Data wrangling + map/plot | 7 | 15 % |
+| Assignment 2 · Mini spatial model | 10 | 25 % |
+| **Final project** · End-to-end case study | Exam week | 60 % |
+
+
+## First-week checklist
+- Install R, RStudio, QGIS  
+- Syntax & simple coding
+
+Questions? Post in **#Forum** on Digicampus.

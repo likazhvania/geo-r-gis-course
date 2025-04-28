@@ -7,10 +7,6 @@ format:
   html:
     toc: true
     #code-link: true     # adds “” copy button  # 📋 copy-code button
-  pdf: 
-    toc: true
-    number-sections: true
-    colorlinks: true
 ---
 
 <!-- If you have a banner image, uncomment: -->
