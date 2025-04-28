@@ -1,14 +1,14 @@
 project:
   type: book
-  output-dir: docs/          # built HTML goes here
+  output-dir: docs          # built HTML goes here
   execute-dir: project
 
 book:
   title: "R & GIS for Geoinformatics"
-  author: "Your Name"
-  date: "2024-09-01"
-  repo-url: "https://github.com/likazhvania/geo-r-gis-course/tree/main"
-  downloads: [pdf]     # Quarto will create these on render
+  author: "Lika Zhvania"
+  #date: "2024-09-01"
+  #repo-url: "https://github.com/likazhvania/geo-r-gis-course/tree/main"
+  #downloads: [pdf]     # Quarto will create these on render
   sidebar:
     style: "floating"        # nice left-hand nav
   chapters:

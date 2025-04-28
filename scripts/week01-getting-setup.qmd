@@ -1,17 +1,173 @@
 ---
 title: "Getting set up"
+subtitle: "R & GIS for Geoinformatics (B.Sc.)"
+author: Lika Zhvania
+numbered: true            # keep chapter number in book
 format:
   html:
-    code-link: true     # adds “” copy button
-learning-objectives:
-  - Install R, RStudio, QGIS and required packages
-  - Navigate RStudio panes; run an R script
-  - Understand what a GIS is and why we use both R & QGIS
+    toc: true
+    #code-link: true     # adds “” copy button  # 📋 copy-code button
+  pdf: 
+    toc: true
+    number-sections: true
+    colorlinks: true
 ---
 
-## 1  Warm-up (10 min)
+<!-- If you have a banner image, uncomment: -->
 
-> Open RStudio and type:
+<!-- ![](figures/r_qgis_bridge.png){width=200px style="float:right;margin-left:15px"} -->
+
+## Learning objectives
+
+-   Create & organise an RStudio **Project** and plain **R scripts**
+-   Install and load R packages (`tidyverse`, `sf`, `ggplot2`)
+-   Import, explore, summarise, and visualise a dataset
+-   Open a new **QGIS** project, set a working folder, and save settings
+-   Add basemaps and sample data; explore the QGIS interface and key plugins
+
+------------------------------------------------------------------------
+
+## Pre-class checklist
+
+| Software            | Version / link                     |
+|---------------------|------------------------------------|
+| **R**               | ≥ 4.3 <https://cran.r-project.org> |
+| **RStudio Desktop** | Latest <https://posit.co/download> |
+| **QGIS**            | 3.34 (LTR) <https://qgis.org>      |
+| **Git** (optional)  | ≥ 2.40                             |
+
+Create a folder `geo-course/` somewhere you have write access. We’ll treat this as your **working directory** for the whole semester.
+
+------------------------------------------------------------------------
+
+## Part A - R Basics
+
+### Create an R script
+
+1.  Launch **RStudio** → *File ▸ New Project ▸ Existing Directory* → point to `geo-course/`.
+2.  *File ▸ New File ▸ R Script* → save as `week01_intro.R`.
+3.  At the very top add:
 
 ```{r}
-print("Hello GIS!")
+# week01_intro.R  -- your first R commands
+print("Hello, GIS world!")
+```
+
+Tip: The Files pane mirrors your disk. Use New Folder to keep /data, /scripts, /outputs tidy.
+
+### Install & load libraries
+
+```{r}
+# Run **once** per machine
+#install.packages(c("tidyverse", "ggplot2", "dplyr", "sf"))
+```
+
+```{r}
+# Run in every new R session
+library(tidyverse)   # loads ggplot2, dplyr, readr, etc.
+library(sf)          # spatial data
+```
+
+### Core syntax refresher
+
+```{r}
+# assigning objects
+greeting <- "Hello, R!"
+year     <- 2025
+is_spatial <- TRUE
+```
+
+```{r}
+greeting
+year
+is_spatial
+```
+
+```{r}
+# vectors ⟶ simple arithmetic
+nums <- c(1, 2, 3, 4)
+mean(nums)
+```
+
+### Import a built-in data set
+
+```{r}
+data("mtcars")   # 32 cars × 11 variables
+head(mtcars)
+```
+
+(Later we’ll replace this with real spatial data.)
+
+### Basic data manipulation
+
+```{r}
+mtcars |>
+  summarise(
+    cars        = n(),
+    mean_mpg    = mean(mpg),
+    best_eff    = max(mpg)
+  )
+```
+
+Group by cylinders:
+
+```{r}
+mtcars |>
+  group_by(cyl) |>
+  summarise(across(mpg, list(min = min,
+                             mean = mean,
+                             max = max)))
+```
+
+### First ggplot
+
+```{r}
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point() +
+  labs(x = "Weight (1000 lbs)", y = "Miles / gallon") +
+  theme_minimal()
+```
+
+Export the plot:
+
+```{r}
+ggsave("outputs/mtcars_wt_mpg.png", width = 6, height = 4, dpi = 300)
+```
+
+## Part B - QGIS Basics
+
+### Create & save a QGIS project
+
+1.  Open QGIS 3.34 → Project ▸ New
+2.  Project ▸ Properties ▸ General → set Project home to your geo-course/ folder.
+3.  Project ▸ Save → week01_intro.qgz.
+
+This keeps relative paths identical on any PC.
+
+### Tour of the interface
+
+-   Browser Panel – navigate to / drag files
+-   Layers Panel – toggle visibility, styling, grouping
+-   Map Canvas – the main view
+-   Processing Toolbox – scripts & analysis tools
+-   Top menus: Vector, Raster, Plugins …
+
+### Add basemaps (XYZ Tiles)
+
+Follow the second method in the blog post https://opengislab.com/…/add-basemaps-in-qgis-30 — add QuickMapServices:
+
+1.  Plugins ▸ Manage and Install Plugins → search QuickMapServices → Install.
+2.  Web ▸ QuickMapServices ▸ Settings ▸ More services → Get contributed pack.
+3.  Web ▸ QuickMapServices ▸ OSM ▸ OSM Standard (or any favourite basemap).
+
+### Load sample vector data
+
+Grab the Natural Earth admin-0 countries shapefile (≈ 10 MB): \* Layer ▸ Add Layer ▸ Add Vector Layer → Protocol → URL: https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural/ne_50m_admin_0_countries.zip Geometry column = the_geom → Add
+
+Style polygons quickly via Layer Styling ▸ single symbol.
+
+### Key plugins to know
+
+Plugin \| Why it matters QuickMapServices \| instant basemaps QuickOSM \| download OSM features by query Processing R Provider \| run R scripts from within QGIS OpenLayers Plugin (legacy) \| alternative basemaps Geometry by Expression \| attribute-driven geometry edits
+
+Install via Plugins dialog as needed.

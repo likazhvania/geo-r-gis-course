@@ -1,6 +1,15 @@
 ---
-#title: "assignments-overview"
-editor: visual
+#title: "Overview"
 ---
 
 # Overview {.unnumbered}
+
+This module uses **two formative assignments** plus a **summative final project**:
+
+| Item                                          | When        | Weight | Purpose                                                           |
+|-----------------------------------------------|-------------|--------|-------------------------------------------------------------------|
+| **Assignment 1 – Data Wrangling & Basic Map** | due Week 7  | 15 %   | Check grasp of tidy data, joins, simple cartography.              |
+| **Assignment 2 – Mini Spatial Model**         | due Week 10 | 25 %   | Apply vector analysis or accessibility workflow to a new dataset. |
+| **Final Project**                             | exam week   | 60 %   | End-to-end case study integrating R & QGIS with written report.   |
+
+*Late policy, submission format, and marking rubric follow below …*
