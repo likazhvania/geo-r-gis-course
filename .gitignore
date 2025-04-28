@@ -24,8 +24,8 @@ renv/sandbox/
 #  Quarto ---------------------------------------------------------------------
 ###############################################################################
 # site build (comment-out if you *commit* docs/ for GitHub Pages)
-_site/
-docs/
+#_site/
+#docs/
 # local cache & temp render folders
 .quarto/
 *.nb.html
